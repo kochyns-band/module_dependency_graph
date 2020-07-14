@@ -1,13 +1,11 @@
 odoo.define('graph_module_dependency.graph', function (require) {
     "use strict";
 
-    debugger;
-    console.log('Hello Peah');
     var Widget = require('web.Widget');
     var core = require('web.core');
     var rpc = require('web.rpc');
     var QWeb = core.qweb;
-    //
+
     var STATE_COLOR = {
         'uninstallable': '#eaeaa4',
         'installed': '#97c2fc',
@@ -122,8 +120,10 @@ odoo.define('graph_module_dependency.graph', function (require) {
                     var nodes = [];
                     var edges = [];
                     data['nodes'].forEach(function (node) {
-                        nodes.push({'id': node['id'], 'label': node['label'], 'color': {'background': STATE_COLOR[node['state']], 'state': node['state']}});
-                        self.$(`li[data-id="${node['id']}"]`).addClass('module_selected');
+                        if (node['id']) {
+                            nodes.push({'id': node['id'], 'label': node['label'], 'color': {'background': STATE_COLOR[node['state']], 'state': node['state']}});
+                            self.$(`li[data-id="${node['id']}"]`).addClass('module_selected');
+                        }
                     });
                     self.graph_nodes.update(nodes);
 

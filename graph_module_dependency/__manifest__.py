@@ -5,7 +5,7 @@
     'author': "Kochyn's Band",
     'website': "https://github.com/kochyns-band/module_dependency_graph",
     'category': 'Tools',
-    'version': '11.0.1.0.1',
+    'version': '11.0.1.0.2',
     'depends': [
         'base',
         'web',
